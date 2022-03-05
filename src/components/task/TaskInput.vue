@@ -1,20 +1,17 @@
 <template>
   <input class="task-input" type="text" v-model="task">
-  <button @click="sayHi">Agregar tarea</button>
+  <button @click="saveTask">Agregar tarea</button>
 </template>
 
-<script>
-export default {
-  data () {
-    return {
-      task: ''
-    };
-  },
-  methods: {
-    sayHi () {
-      this.$emit('save', this.task);
-    }
-  }
+<script setup>
+import { ref, defineEmits } from 'vue';
+
+const emit = defineEmits(['save'])
+
+const task = ref('');
+
+function saveTask() {
+  emit('save', task.value)
 }
 </script>
 

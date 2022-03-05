@@ -6,33 +6,20 @@
   </article>
 </template>
 
-<script>
+<script setup>
+import { ref } from 'vue';
+
 import AppHeader from './components/AppHeader.vue'
 import TaskInput from './components/task/TaskInput.vue';
-import TaskList from './components/task/TaskList.vue';
+import TaskList from './components/task/TaskList.vue'; 
 
-export default {
-  name: 'App',
-  components: {
-    AppHeader,
-    TaskInput,
-    TaskList
-  },
-  data () {
-    return {
-      list: [
-        'Terminar codigo',
-        'hacer aquello'
-      ]
-    }
-  },
-  methods: {
-    saveToList (task) {
-      this.list.push(task);
-    }
-  }
+const list = ref([]);
+
+function saveToList (task) {
+  list.value.push(task);
 }
 </script>
+
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap');
