@@ -1,8 +1,8 @@
 <template>
   <article class="time-tracker">
     <AppHeader />
-    <TaskInput />
-    <TaskList :list="['Terminar codigo', 'hacer aquello']" />
+    <TaskInput @save="saveToList" />
+    <TaskList :list="list" />
   </article>
 </template>
 
@@ -17,6 +17,19 @@ export default {
     AppHeader,
     TaskInput,
     TaskList
+  },
+  data () {
+    return {
+      list: [
+        'Terminar codigo',
+        'hacer aquello'
+      ]
+    }
+  },
+  methods: {
+    saveToList (task) {
+      this.list.push(task);
+    }
   }
 }
 </script>

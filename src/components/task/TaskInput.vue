@@ -1,13 +1,18 @@
 <template>
-  <input class="task-input" type="text">
+  <input class="task-input" type="text" v-model="task">
   <button @click="sayHi">Agregar tarea</button>
 </template>
 
 <script>
 export default {
+  data () {
+    return {
+      task: ''
+    };
+  },
   methods: {
     sayHi () {
-      console.log('HI');
+      this.$emit('save', this.task);
     }
   }
 }
